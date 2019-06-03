@@ -1,0 +1,52 @@
+88.5 bpm 17 - Talk Show Host / Radiohead
+
+539 130 365 320 363 295 642
+617 171 312 333 339 280 643
+457 147 304 388 328 290 684
+485 147 338 343 346 335 655
+527 147 335 349 319 331 680
+477 161 320 355 302 315 708
+478 144 339 368 328 334 666
+490 129 360 338 327 293 698
+497 175 359 350 405 267 675
+543 112 340 352 316 353 633
+547 113 408 327 336 307 717
+
+471 146 322 321 299 322 707
+555 179 320 338 298 348 710
+523 146 359 316 356 301 692
+532 184 342 337 331 337 661
+479 156 321 359 330 338 650
+512 144 368 337 370 353 635
+402 143 388 302 321 333 742
+506 147 335 353 337 334 659
+421 150 339 333 356 334 689
+488 147 374 354 333 319 724
+451 184 353 354 316 358 681
+523 152 318 285 352 340 719
+423 182 342 314 356 314 661
+503 216 322 330 353 354 660
+483 151 385 342 346 337 688
+518 167 340 351 357 331 610
+
+487 162 365 333 338 335 680
+means
+
+max dif from min
+66  19  47  48  40  34  70
+Ratio
+.13 .12 .13 .14 .12 .10 .10
+
+max dif from max
+68  54  23  26  32  23  62
+Ratio
+.14 .33 .06 .08 .07 .07 .09
+
+Notlar:
+Mean'lerin oranlari oldukca yakin. Teoride .75 olmasi gereken .71,
+.50 olmasi gerekenler .48 ve .49
+Tepe farklari da aslinda fena degil. .25 olmasi gereken oran .33 olursa, .25'e .50'den daha
+yakin. O yuzden iyi. hatta .125 fark max olmaliyken  .07 olmasi iyi bile. ben begendim.
+16'lik notayla 8'lik karismasin istersen, tam ortalari .375 limit ayarlaman lazim. .35 ile baya kurtaririz gibi. Iki notaya da ait olmayan bi alan birakabiliriz boylece. Treshold tresholda benzer.
+
+Umarim yazdiklarim ileride anlam ifade eder. Raporlama konusunda gelistirmem gerekiyo sanirim kendimi.
