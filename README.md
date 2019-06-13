@@ -1,4 +1,4 @@
-# Musical_Screen_Lock
+# Musical Screen Lock
 
 ## What it is?
 
