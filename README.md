@@ -1,12 +1,9 @@
 # Musical_Screen_Lock
 
----
-
 ## What it is?
 
 Musical Screen Lock application is a React-Native based application. User can set a musical pattern for device's lock screen and unlock the device with it. It doesn't only support melodies of patterns, but it also measures lengths and distances between notes.
 
----
 
 ## Features
 
