@@ -11,9 +11,8 @@ import {
   ToastAndroid,
   FlatList,
 } from 'react-native';
-import { WebBrowser } from 'expo';
 
-import { MonoText } from '../components/StyledText';
+//import { MonoText } from '../components/StyledText';
 
 export default class DemoScreen extends React.Component {
   static navigationOptions = {
@@ -65,9 +64,6 @@ export default class DemoScreen extends React.Component {
         <View style={styles.tabBarInfoContainer}>
           <Text style={styles.tabBarInfoText}>This is a tab bar. You can edit it in:</Text>
 
-          <View style={[styles.codeHighlightContainer, styles.navigationFilename]}>
-            <MonoText style={styles.codeHighlightText}>navigation/MainTabNavigator.js</MonoText>
-          </View>
         </View>
       </View>
     );

@@ -1,0 +1,33 @@
+dependencies: \
+  /Users/mikail/Downloads/PatternLock/node_modules/react-native/Libraries/Text/TextInput/Multiline/RCTMultilineTextInputViewManager.m \
+  /Users/mikail/Downloads/PatternLock/node_modules/react-native/Libraries/Text/TextInput/Multiline/RCTMultilineTextInputViewManager.h \
+  /Users/mikail/Downloads/PatternLock/node_modules/react-native/Libraries/Text/TextInput/RCTBaseTextInputViewManager.h \
+  /Users/mikail/Downloads/PatternLock/node_modules/react-native/Libraries/Text/BaseText/RCTBaseTextViewManager.h \
+  /Users/mikail/Downloads/PatternLock/ios/build/PatternLock/Build/Products/Debug-iphonesimulator/include/React/RCTViewManager.h \
+  /Users/mikail/Downloads/PatternLock/ios/build/PatternLock/Build/Products/Debug-iphonesimulator/include/React/RCTBridgeModule.h \
+  /Users/mikail/Downloads/PatternLock/ios/build/PatternLock/Build/Products/Debug-iphonesimulator/include/React/RCTDefines.h \
+  /Users/mikail/Downloads/PatternLock/ios/build/PatternLock/Build/Products/Debug-iphonesimulator/include/React/RCTConvert.h \
+  /Users/mikail/Downloads/PatternLock/ios/build/PatternLock/Build/Products/Debug-iphonesimulator/include/React/RCTAnimationType.h \
+  /Users/mikail/Downloads/PatternLock/ios/build/PatternLock/Build/Products/Debug-iphonesimulator/include/React/RCTBorderStyle.h \
+  /Users/mikail/Downloads/PatternLock/ios/build/PatternLock/Build/Products/Debug-iphonesimulator/include/React/RCTLog.h \
+  /Users/mikail/Downloads/PatternLock/ios/build/PatternLock/Build/Products/Debug-iphonesimulator/include/React/RCTAssert.h \
+  /Users/mikail/Downloads/PatternLock/ios/build/PatternLock/Build/Products/Debug-iphonesimulator/include/React/RCTUtils.h \
+  /Users/mikail/Downloads/PatternLock/ios/build/PatternLock/Build/Products/Debug-iphonesimulator/include/React/RCTPointerEvents.h \
+  /Users/mikail/Downloads/PatternLock/ios/build/PatternLock/Build/Products/Debug-iphonesimulator/include/React/RCTTextDecorationLineType.h \
+  /Users/mikail/Downloads/PatternLock/ios/build/PatternLock/Build/Products/Debug-iphonesimulator/include/yoga/Yoga.h \
+  /Users/mikail/Downloads/PatternLock/ios/build/PatternLock/Build/Products/Debug-iphonesimulator/include/yoga/YGEnums.h \
+  /Users/mikail/Downloads/PatternLock/ios/build/PatternLock/Build/Products/Debug-iphonesimulator/include/yoga/YGMacros.h \
+  /Users/mikail/Downloads/PatternLock/ios/build/PatternLock/Build/Products/Debug-iphonesimulator/include/yoga/YGValue.h \
+  /Users/mikail/Downloads/PatternLock/ios/build/PatternLock/Build/Products/Debug-iphonesimulator/include/React/RCTEventDispatcher.h \
+  /Users/mikail/Downloads/PatternLock/ios/build/PatternLock/Build/Products/Debug-iphonesimulator/include/React/RCTBridge.h \
+  /Users/mikail/Downloads/PatternLock/ios/build/PatternLock/Build/Products/Debug-iphonesimulator/include/React/RCTBridgeDelegate.h \
+  /Users/mikail/Downloads/PatternLock/ios/build/PatternLock/Build/Products/Debug-iphonesimulator/include/React/RCTJavaScriptLoader.h \
+  /Users/mikail/Downloads/PatternLock/ios/build/PatternLock/Build/Products/Debug-iphonesimulator/include/React/RCTFrameUpdate.h \
+  /Users/mikail/Downloads/PatternLock/ios/build/PatternLock/Build/Products/Debug-iphonesimulator/include/React/RCTInvalidating.h \
+  /Users/mikail/Downloads/PatternLock/ios/build/PatternLock/Build/Products/Debug-iphonesimulator/include/React/UIView+React.h \
+  /Users/mikail/Downloads/PatternLock/ios/build/PatternLock/Build/Products/Debug-iphonesimulator/include/React/RCTComponent.h \
+  /Users/mikail/Downloads/PatternLock/node_modules/react-native/Libraries/Text/TextInput/Multiline/RCTMultilineTextInputView.h \
+  /Users/mikail/Downloads/PatternLock/node_modules/react-native/Libraries/Text/TextInput/RCTBaseTextInputView.h \
+  /Users/mikail/Downloads/PatternLock/ios/build/PatternLock/Build/Products/Debug-iphonesimulator/include/React/RCTView.h \
+  /Users/mikail/Downloads/PatternLock/node_modules/react-native/Libraries/Text/TextInput/RCTBackedTextInputDelegate.h \
+  /Users/mikail/Downloads/PatternLock/node_modules/react-native/Libraries/Text/TextInput/RCTBackedTextInputViewProtocol.h

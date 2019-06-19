@@ -6,7 +6,6 @@ import {
     View,
     Text,
 } from 'react-native';
-import { ExpoLinksView } from '@expo/samples';
 
 export default class MainScreen extends React.Component {
   static navigationOptions = {

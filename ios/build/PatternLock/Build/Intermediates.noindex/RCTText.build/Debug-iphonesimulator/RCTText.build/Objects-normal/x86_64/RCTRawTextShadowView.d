@@ -1,0 +1,19 @@
+dependencies: \
+  /Users/mikail/Downloads/PatternLock/node_modules/react-native/Libraries/Text/RawText/RCTRawTextShadowView.m \
+  /Users/mikail/Downloads/PatternLock/node_modules/react-native/Libraries/Text/RawText/RCTRawTextShadowView.h \
+  /Users/mikail/Downloads/PatternLock/ios/build/PatternLock/Build/Products/Debug-iphonesimulator/include/React/RCTShadowView.h \
+  /Users/mikail/Downloads/PatternLock/ios/build/PatternLock/Build/Products/Debug-iphonesimulator/include/React/RCTComponent.h \
+  /Users/mikail/Downloads/PatternLock/ios/build/PatternLock/Build/Products/Debug-iphonesimulator/include/React/RCTLayout.h \
+  /Users/mikail/Downloads/PatternLock/ios/build/PatternLock/Build/Products/Debug-iphonesimulator/include/React/RCTDefines.h \
+  /Users/mikail/Downloads/PatternLock/ios/build/PatternLock/Build/Products/Debug-iphonesimulator/include/yoga/Yoga.h \
+  /Users/mikail/Downloads/PatternLock/ios/build/PatternLock/Build/Products/Debug-iphonesimulator/include/yoga/YGEnums.h \
+  /Users/mikail/Downloads/PatternLock/ios/build/PatternLock/Build/Products/Debug-iphonesimulator/include/yoga/YGMacros.h \
+  /Users/mikail/Downloads/PatternLock/ios/build/PatternLock/Build/Products/Debug-iphonesimulator/include/yoga/YGValue.h \
+  /Users/mikail/Downloads/PatternLock/ios/build/PatternLock/Build/Products/Debug-iphonesimulator/include/React/RCTRootView.h \
+  /Users/mikail/Downloads/PatternLock/ios/build/PatternLock/Build/Products/Debug-iphonesimulator/include/React/RCTBridge.h \
+  /Users/mikail/Downloads/PatternLock/ios/build/PatternLock/Build/Products/Debug-iphonesimulator/include/React/RCTBridgeDelegate.h \
+  /Users/mikail/Downloads/PatternLock/ios/build/PatternLock/Build/Products/Debug-iphonesimulator/include/React/RCTJavaScriptLoader.h \
+  /Users/mikail/Downloads/PatternLock/ios/build/PatternLock/Build/Products/Debug-iphonesimulator/include/React/RCTBridgeModule.h \
+  /Users/mikail/Downloads/PatternLock/ios/build/PatternLock/Build/Products/Debug-iphonesimulator/include/React/RCTFrameUpdate.h \
+  /Users/mikail/Downloads/PatternLock/ios/build/PatternLock/Build/Products/Debug-iphonesimulator/include/React/RCTInvalidating.h \
+  /Users/mikail/Downloads/PatternLock/ios/build/PatternLock/Build/Products/Debug-iphonesimulator/include/React/RCTShadowView+Layout.h

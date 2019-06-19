@@ -1,5 +1,6 @@
+// New Project
 import React from 'react';
-import { Platform } from 'react-native';
+import { Platform, Text } from 'react-native';
 import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
 
 import TabBarIcon from '../components/TabBarIcon';
@@ -21,16 +22,11 @@ const FreePlayStack = createStackNavigator({
 
 FreePlayStack.navigationOptions = {
     tabBarLabel: 'Free Play',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name={
-        Platform.OS === 'ios'
-          ? `ios-information-circle${focused ? '' : '-outline'}`
-          : 'md-information-circle'
-      }
-    />
-  ),
+        tabBarIcon: ({ focused }) => (
+            <TabBarIcon
+                focused={focused}
+                name={"music"} />
+      ),
 };
 
 const PasswordStack = createStackNavigator({
@@ -42,13 +38,12 @@ const PasswordStack = createStackNavigator({
 });
 
 PasswordStack.navigationOptions = {
-    tabBarLabel: 'Set Password/PIN',
-    tabBarIcon: ({ focused  }) => (
-        <TabBarIcon
-            focused={focused}
-            name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'}
-        />
-    ),
+    tabBarLabel: 'Set Lock/PIN',
+        tabBarIcon: ({ focused }) => (
+            <TabBarIcon
+                focused={focused}
+                name={"lock"} />
+      ),
 };
 
 const OptionsStack = createStackNavigator({
@@ -57,12 +52,11 @@ const OptionsStack = createStackNavigator({
 
 OptionsStack.navigationOptions = {
   tabBarLabel: 'Options',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'}
-    />
-  ),
+    tabBarIcon: ({ focused }) => (
+          <TabBarIcon
+              focused={focused}
+              name={"wrench"} />
+    ),
 };
 
 const AboutStack = createStackNavigator({
@@ -70,13 +64,12 @@ const AboutStack = createStackNavigator({
 });
 
 AboutStack.navigationOptions = {
-  tabBarLabel: 'Options',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'}
-    />
-  ),
+  tabBarLabel: 'About',
+    tabBarIcon: ({ focused }) => (
+          <TabBarIcon
+              focused={focused}
+              name={"heart"} />
+    ),
 };
 
 
@@ -86,3 +79,5 @@ export default createBottomTabNavigator({
   OptionsStack,
   AboutStack,
 });
+
+

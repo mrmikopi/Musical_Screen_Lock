@@ -1,6 +1,5 @@
 import React from 'react';
-import { ScrollView, Button, Text,  TouchableOpacity, ToastAndroid,  StyleSheet } from 'react-native';
-import { ExpoLinksView } from '@expo/samples';
+import { Platform, ScrollView, Button, Text,  TouchableOpacity, ToastAndroid,  StyleSheet } from 'react-native';
 
 export default class SelectInstScreen extends React.Component {
     static navigationOptions =  ({navigation}) => {
@@ -24,8 +23,13 @@ export default class SelectInstScreen extends React.Component {
                 )}>
                 <Text style={styles.text}>{'The Ultimate\nDUMDUM TEKTEK'}</Text>
           </TouchableOpacity>
-            <Button title="Church Organ" onPress={ () =>
-                    ToastAndroid.show('I Wish :)', ToastAndroid.SHORT)}/>
+          <Button title="Church Organ" onPress={ () => {
+              if(Platform.OS === 'android'){
+                ToastAndroid.show('I Wish :)', ToastAndroid.SHORT)
+              }
+          }
+          }
+                    />
       </ScrollView>
     );
   }

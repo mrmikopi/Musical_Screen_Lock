@@ -1,7 +1,6 @@
 import React from 'react';
 import {Text,StyleSheet,View,SafeAreaView} from 'react-native';
 //import SafeAreaView from 'react-navigation';
-import { ExpoConfigView } from '@expo/samples';
 
 export default class AboutScreen  extends React.Component {
   static navigationOptions = {
