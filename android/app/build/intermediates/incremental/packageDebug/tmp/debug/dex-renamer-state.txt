@@ -1,4 +1,4 @@
-#Mon Jun 17 15:33:15 EET 2019
-base.0=/Users/mikail/Downloads/PatternLock/android/app/build/intermediates/transforms/dexMerger/debug/0
+#Fri Jun 21 11:08:17 EET 2019
+base.0=/Users/mikail/Downloads/Musical_Screen_Lock/android/app/build/intermediates/transforms/dexMerger/debug/0
 path.0=classes.dex
 renamed.0=classes.dex

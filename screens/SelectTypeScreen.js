@@ -15,7 +15,6 @@ export default class SelectTypeScreen extends React.Component {
   render() {
     /* Go ahead and delete ExpoConfigView and replace it with your
      * content, we just wanted to give you a quick view of your config */
-      navigate = _retrieveData();
       return (
         <View style={styles.container}>
             <Button title='Set Music Pattern' onPress={() =>
@@ -24,21 +23,28 @@ export default class SelectTypeScreen extends React.Component {
             }/>
             {/* Error dondururse locked screen'e degil de baska bi
                 stack screen'e yollayabilirsin. */}
-            <Button title='Set Pin Code' onPress={() =>
-                this.props.navigation.navigate('Pin', {
-                    action: (navigate !== 'error' ? 'choose' : 'locked'),
-                })}/>
+            <Button title='Set Pin Code' onPress={() => this.yonlendir()}/>
         </View>
       );
   }
-}
 
+    yonlendir(){
+        const action = this._retrieveData();
+        this.props.navigation.navigate('Pin', {'action' : action,});
+    }
 _retrieveData = async () => {
-  try {
-    const value = await AsyncStorage.getItem('AsyncPin');
+    try {
+        try{
+            await AsyncStorage.setItem('AsyncPin', 'choose');
+        } catch (error) {
+            console.log(error.message);
+        }
+      const value = await AsyncStorage.getItem('AsyncPin');
+
     if (value !== null) {
       // We have data!!
         //console.log(value);
+        if(value === 'choose'){return 'choose';}
         return 'enter';
     } else {
         return 'choose';
@@ -48,7 +54,22 @@ _retrieveData = async () => {
       //console.log(error);
       return 'error';
   }
-};
+}
+
+
+
+
+
+}
+
+
+// TODO
+//
+// AsyncStorage Kay Value pairs donduruyor DUZELT!!!!
+//
+// TODO
+
+
 
 const styles = StyleSheet.create({
     container: {

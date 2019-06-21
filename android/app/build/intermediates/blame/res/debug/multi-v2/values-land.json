@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/mikail/Downloads/PatternLock/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-land/values-land.xml",
+            "outputFile": "/Users/mikail/Downloads/Musical_Screen_Lock/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-land/values-land.xml",
             "map": [
                 {
-                    "source": "/Users/mikail/.gradle/caches/transforms-2/files-2.1/b65d9562f6236474bda9c25cbea7e07d/res/values-land/values-land.xml",
+                    "source": "/Users/mikail/.gradle/caches/transforms-2/files-2.1/a5bac28042f5ce3586fb512c37b9c1c3/res/values-land/values-land.xml",
                     "from": {
                         "startLines": "2,3,4",
                         "startColumns": "4,4,4",
