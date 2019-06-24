@@ -4,6 +4,7 @@ import {
     View,
     Button,
     StyleSheet,
+    ToastAndroid,
 } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 
@@ -12,9 +13,20 @@ export default class SelectTypeScreen extends React.Component {
     title: 'Select Password Type:',
   };
 
+  constructor(props){
+    super(props);
+    this.state = {action: 0};
+  }
+
+  componentDidMount(){
+    this.setState({
+      action: this._retrieveData(),
+    });
+    console.log(this.state.action.toString());
+  }
+
   render() {
-    /* Go ahead and delete ExpoConfigView and replace it with your
-     * content, we just wanted to give you a quick view of your config */
+    //ToastAndroid.show(typeof data, ToastAndroid.SHORT);
       return (
         <View style={styles.container}>
             <Button title='Set Music Pattern' onPress={() =>
@@ -23,43 +35,54 @@ export default class SelectTypeScreen extends React.Component {
             }/>
             {/* Error dondururse locked screen'e degil de baska bi
                 stack screen'e yollayabilirsin. */}
-            <Button title='Set Pin Code' onPress={() => this.yonlendir()}/>
+                <Button title='Set Pin Code' onPress={() => {
+                  console.log(this.state.action);
+                  //ToastAndroid.show(this.state.action.toString(), ToastAndroid.SHORT);
+                  //this.getAction();
+                  //this.props.navigation.navigate('Pin', {'action': this.state.action});
+                }}/>
         </View>
       );
   }
 
-    yonlendir(){
-        const action = this._retrieveData();
-        this.props.navigation.navigate('Pin', {'action' : action,});
-    }
-_retrieveData = async () => {
-    try {
-        try{
-            await AsyncStorage.setItem('AsyncPin', 'choose');
-        } catch (error) {
-            console.log(error.message);
-        }
-      const value = await AsyncStorage.getItem('AsyncPin');
-
-    if (value !== null) {
-      // We have data!!
-        //console.log(value);
-        if(value === 'choose'){return 'choose';}
-        return 'enter';
-    } else {
-        return 'choose';
-    }
-  } catch (error) {
-      // Error retrieving data
-      //console.log(error);
-      return 'error';
+  getAction = () => {
+    ToastAndroid.show(this.state.action, ToastAndroid.SHORT);
+    return this.state.action
   }
-}
 
+  yonlendir(){
+    const action = this._retrieveData();
+    ToastAndroid.show(action.action2, ToastAndroid.LONG);
+    //this.props.navigation.navigate('Pin', {'action' : action,});
+  }
 
+    _retrieveData = async () => {
+      try {
+        //const data = {action2: 'choose'};
+        //await AsyncStorage.setItem("AsyncPin", JSON.stringify(data));
+        AsyncStorage.removeItem("AsyncPin");
+        const value = await AsyncStorage.getItem("AsyncPin");
+        console.log(value);
+        //AsyncStorage.setItem('AsyncPin', '1234');
+        //const value = await AsyncStorage.getItem("AsyncPin", () => {
+        //  ToastAndroid.show('Callback Function', ToastAndroid.SHORT);
+        //});
 
-
-
+        if(value !== null){
+          const item = JSON.parse(value);
+          ToastAndroid.show(typeof item.act, ToastAndroid.SHORT);
+          return 2;
+        } else {
+          //ToastAndroid.show('Will return Choose', ToastAndroid.SHORT);
+          return 1;
+        }
+      } catch (error) {
+          // Error retrieving data
+          //console.log(error);
+          return 0;
+      }
+      return 0;
+    }
 }
 
 
