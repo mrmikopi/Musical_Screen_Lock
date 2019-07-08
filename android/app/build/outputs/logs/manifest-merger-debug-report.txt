@@ -5,12 +5,14 @@ INJECTED from /Users/mikail/Downloads/Musical_Screen_Lock/android/app/src/main/A
 INJECTED from /Users/mikail/Downloads/Musical_Screen_Lock/android/app/src/main/AndroidManifest.xml:1:1-27:12
 INJECTED from /Users/mikail/Downloads/Musical_Screen_Lock/android/app/src/main/AndroidManifest.xml:1:1-27:12
 MERGED from /Users/mikail/Downloads/Musical_Screen_Lock/android/app/src/main/AndroidManifest.xml:1:1-27:12
+MERGED from [:react-native-keychain] /Users/mikail/Downloads/Musical_Screen_Lock/node_modules/react-native-keychain/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-13:12
 MERGED from [:@react-native-community_async-storage] /Users/mikail/Downloads/Musical_Screen_Lock/node_modules/@react-native-community/async-storage/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-9:12
 MERGED from [:react-native-vector-icons] /Users/mikail/Downloads/Musical_Screen_Lock/node_modules/react-native-vector-icons/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
 MERGED from [:react-native-share] /Users/mikail/Downloads/Musical_Screen_Lock/node_modules/react-native-share/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-28:12
 MERGED from [:react-native-gesture-handler] /Users/mikail/Downloads/Musical_Screen_Lock/node_modules/react-native-gesture-handler/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
 MERGED from [com.facebook.react:react-native:0.59.9] /Users/mikail/.gradle/caches/transforms-2/files-2.1/a208bdb8d1decc24107d4e1a2a092149/AndroidManifest.xml:2:1-13:12
 MERGED from [com.android.support:appcompat-v7:28.0.0] /Users/mikail/.gradle/caches/transforms-2/files-2.1/a5bac28042f5ce3586fb512c37b9c1c3/AndroidManifest.xml:17:1-22:12
+MERGED from [com.facebook.conceal:conceal:1.1.3] /Users/mikail/.gradle/caches/transforms-2/files-2.1/357779e35e0c571f177e1eb885e579c3/AndroidManifest.xml:7:1-16:12
 MERGED from [com.android.support:support-fragment:28.0.0] /Users/mikail/.gradle/caches/transforms-2/files-2.1/1f7a84650f215fe192873f32bcc33623/AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:animated-vector-drawable:28.0.0] /Users/mikail/.gradle/caches/transforms-2/files-2.1/28dab31d5bacb9dc0d33fb0db468e300/AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:support-core-ui:28.0.0] /Users/mikail/.gradle/caches/transforms-2/files-2.1/b4fd90b51d73bd90a50523899ae14d50/AndroidManifest.xml:17:1-22:12
@@ -139,6 +141,8 @@ uses-sdk
 INJECTED from /Users/mikail/Downloads/Musical_Screen_Lock/android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /Users/mikail/Downloads/Musical_Screen_Lock/android/app/src/main/AndroidManifest.xml
 INJECTED from /Users/mikail/Downloads/Musical_Screen_Lock/android/app/src/main/AndroidManifest.xml
+MERGED from [:react-native-keychain] /Users/mikail/Downloads/Musical_Screen_Lock/node_modules/react-native-keychain/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-keychain] /Users/mikail/Downloads/Musical_Screen_Lock/node_modules/react-native-keychain/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [:@react-native-community_async-storage] /Users/mikail/Downloads/Musical_Screen_Lock/node_modules/@react-native-community/async-storage/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:@react-native-community_async-storage] /Users/mikail/Downloads/Musical_Screen_Lock/node_modules/@react-native-community/async-storage/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-vector-icons] /Users/mikail/Downloads/Musical_Screen_Lock/node_modules/react-native-vector-icons/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
@@ -151,6 +155,8 @@ MERGED from [com.facebook.react:react-native:0.59.9] /Users/mikail/.gradle/cache
 MERGED from [com.facebook.react:react-native:0.59.9] /Users/mikail/.gradle/caches/transforms-2/files-2.1/a208bdb8d1decc24107d4e1a2a092149/AndroidManifest.xml:7:5-9:41
 MERGED from [com.android.support:appcompat-v7:28.0.0] /Users/mikail/.gradle/caches/transforms-2/files-2.1/a5bac28042f5ce3586fb512c37b9c1c3/AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:appcompat-v7:28.0.0] /Users/mikail/.gradle/caches/transforms-2/files-2.1/a5bac28042f5ce3586fb512c37b9c1c3/AndroidManifest.xml:20:5-44
+MERGED from [com.facebook.conceal:conceal:1.1.3] /Users/mikail/.gradle/caches/transforms-2/files-2.1/357779e35e0c571f177e1eb885e579c3/AndroidManifest.xml:12:5-14:41
+MERGED from [com.facebook.conceal:conceal:1.1.3] /Users/mikail/.gradle/caches/transforms-2/files-2.1/357779e35e0c571f177e1eb885e579c3/AndroidManifest.xml:12:5-14:41
 MERGED from [com.android.support:support-fragment:28.0.0] /Users/mikail/.gradle/caches/transforms-2/files-2.1/1f7a84650f215fe192873f32bcc33623/AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-fragment:28.0.0] /Users/mikail/.gradle/caches/transforms-2/files-2.1/1f7a84650f215fe192873f32bcc33623/AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:animated-vector-drawable:28.0.0] /Users/mikail/.gradle/caches/transforms-2/files-2.1/28dab31d5bacb9dc0d33fb0db468e300/AndroidManifest.xml:20:5-44
@@ -227,6 +233,10 @@ uses-permission#android.permission.SYSTEM_ALERT_WINDOW
 ADDED from /Users/mikail/Downloads/Musical_Screen_Lock/android/app/src/debug/AndroidManifest.xml:5:5-77
 	android:name
 		ADDED from /Users/mikail/Downloads/Musical_Screen_Lock/android/app/src/debug/AndroidManifest.xml:5:22-75
+uses-permission#android.permission.USE_FINGERPRINT
+ADDED from [:react-native-keychain] /Users/mikail/Downloads/Musical_Screen_Lock/node_modules/react-native-keychain/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:11:5-74
+	android:name
+		ADDED from [:react-native-keychain] /Users/mikail/Downloads/Musical_Screen_Lock/node_modules/react-native-keychain/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:11:22-71
 uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
 ADDED from [:react-native-share] /Users/mikail/Downloads/Musical_Screen_Lock/node_modules/react-native-share/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:12:5-81
 	android:name

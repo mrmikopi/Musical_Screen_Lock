@@ -15,7 +15,7 @@ export default class SelectTypeScreen extends React.Component {
 
   constructor(props){
     super(props);
-    this.state = {action: 0};
+    this.state = {action: ''};
   }
 
   componentDidMount(){
@@ -56,33 +56,33 @@ export default class SelectTypeScreen extends React.Component {
     //this.props.navigation.navigate('Pin', {'action' : action,});
   }
 
-    _retrieveData = async () => {
-      try {
-        //const data = {action2: 'choose'};
-        //await AsyncStorage.setItem("AsyncPin", JSON.stringify(data));
-        AsyncStorage.removeItem("AsyncPin");
-        const value = await AsyncStorage.getItem("AsyncPin");
-        console.log(value);
-        //AsyncStorage.setItem('AsyncPin', '1234');
-        //const value = await AsyncStorage.getItem("AsyncPin", () => {
-        //  ToastAndroid.show('Callback Function', ToastAndroid.SHORT);
-        //});
+  _retrieveData = async () => {
+    try {
+      //const data = {action2: 'choose'};
+      //await AsyncStorage.setItem("AsyncPin", JSON.stringify(data));
+      AsyncStorage.removeItem("AsyncPin");
+      const value = await AsyncStorage.getItem("AsyncPin");
+      console.log(value);
+      //AsyncStorage.setItem('AsyncPin', '1234');
+      //const value = await AsyncStorage.getItem("AsyncPin", () => {
+      //  ToastAndroid.show('Callback Function', ToastAndroid.SHORT);
+      //});
 
-        if(value !== null){
-          const item = JSON.parse(value);
-          ToastAndroid.show(typeof item.act, ToastAndroid.SHORT);
-          return 2;
-        } else {
-          //ToastAndroid.show('Will return Choose', ToastAndroid.SHORT);
-          return 1;
-        }
-      } catch (error) {
-          // Error retrieving data
-          //console.log(error);
-          return 0;
+      if(value !== null){
+        const item = JSON.parse(value);
+        ToastAndroid.show(typeof item.act, ToastAndroid.SHORT);
+        return 2;
+      } else {
+        //ToastAndroid.show('Will return Choose', ToastAndroid.SHORT);
+        return 1;
       }
-      return 0;
+    } catch (error) {
+        // Error retrieving data
+        //console.log(error);
+        return 0;
     }
+    return 0;
+  } //end _retrieveData
 }
 
 
