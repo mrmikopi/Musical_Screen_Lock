@@ -19,9 +19,7 @@ export default class SelectTypeScreen extends React.Component {
   }
 
   componentDidMount(){
-    this.setState({
-      action: this._retrieveData(),
-    });
+    this._retrieveData().then(value => this.setState({action: value}));
     console.log(this.state.action.toString());
   }
 
@@ -36,10 +34,10 @@ export default class SelectTypeScreen extends React.Component {
             {/* Error dondururse locked screen'e degil de baska bi
                 stack screen'e yollayabilirsin. */}
                 <Button title='Set Pin Code' onPress={() => {
-                  console.log(this.state.action);
+                  //console.log(this.state.action);
                   //ToastAndroid.show(this.state.action.toString(), ToastAndroid.SHORT);
                   //this.getAction();
-                  //this.props.navigation.navigate('Pin', {'action': this.state.action});
+                  this.props.navigation.navigate('Pin', {'action': this.state.action});
                 }}/>
         </View>
       );
@@ -59,29 +57,30 @@ export default class SelectTypeScreen extends React.Component {
   _retrieveData = async () => {
     try {
       //const data = {action2: 'choose'};
-      //await AsyncStorage.setItem("AsyncPin", JSON.stringify(data));
-      AsyncStorage.removeItem("AsyncPin");
+      await AsyncStorage.setItem("AsyncPin", "1234");
+
+      //AsyncStorage.removeItem("AsyncPin");
       const value = await AsyncStorage.getItem("AsyncPin");
-      console.log(value);
+      console.log('Inside _retrieve, i awaited value: ' + value);
       //AsyncStorage.setItem('AsyncPin', '1234');
       //const value = await AsyncStorage.getItem("AsyncPin", () => {
       //  ToastAndroid.show('Callback Function', ToastAndroid.SHORT);
       //});
 
       if(value !== null){
-        const item = JSON.parse(value);
-        ToastAndroid.show(typeof item.act, ToastAndroid.SHORT);
-        return 2;
+        //const item = JSON.parse(value);
+        //ToastAndroid.show(typeof item.act, ToastAndroid.SHORT);
+        return 'enter';
       } else {
         //ToastAndroid.show('Will return Choose', ToastAndroid.SHORT);
-        return 1;
+        return 'set';
       }
     } catch (error) {
         // Error retrieving data
         //console.log(error);
-        return 0;
+        return 'error';
     }
-    return 0;
+    return 'error';
   } //end _retrieveData
 }
 
