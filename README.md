@@ -13,7 +13,7 @@ Musical Screen Lock application is a React-Native based application. User can se
 - [x] Note lengths have .35 error tolerence to ignore small differences
 - [x] Program also has a free play mode, in case user wants to just play the instruments
 - [x] Has bongo drums as the instrument
-- [ ] Application also supports a PIN code pattern in order to help users if they forget their patterns.
+- [x] Application also supports a PIN code pattern in order to help users if they forget their patterns.
 - [ ] More instruments will be added
 - [ ] Can manage phones default lock privileges and disable them
 - [ ] IOS doesn't support third party screen locks, so main feature will be available in Android only
