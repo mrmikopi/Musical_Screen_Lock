@@ -19,8 +19,14 @@ export default class SelectTypeScreen extends React.Component {
   }
 
   componentDidMount(){
+    //console.log("Removing AsyncPin");
+    //await AsyncStorage.removeItem("AsyncPin");
     this._retrieveData().then(value => this.setState({action: value}));
-    console.log(this.state.action.toString());
+
+  }
+
+  _redirect(){
+    this._retrieveData().then(value => this.setState({action: value}));
   }
 
   render() {
@@ -34,10 +40,18 @@ export default class SelectTypeScreen extends React.Component {
             {/* Error dondururse locked screen'e degil de baska bi
                 stack screen'e yollayabilirsin. */}
                 <Button title='Set Pin Code' onPress={() => {
-                  //console.log(this.state.action);
+                  this._redirect();
+                  console.log("In SelectT, will pass action: " + this.state.action);
                   //ToastAndroid.show(this.state.action.toString(), ToastAndroid.SHORT);
                   //this.getAction();
-                  this.props.navigation.navigate('Pin', {'action': this.state.action});
+                  this.props.navigation.navigate({
+                    routeName: 'Pin',
+                    params: {
+                      // Might use 'action' instead
+                      action : this.state.action,
+                    },
+                    key: 'Pin' + this.state.action
+                  });
                 }}/>
         </View>
       );
@@ -57,11 +71,11 @@ export default class SelectTypeScreen extends React.Component {
   _retrieveData = async () => {
     try {
       //const data = {action2: 'choose'};
-      await AsyncStorage.setItem("AsyncPin", "1234");
+      //await AsyncStorage.setItem("AsyncPin", "1234");
 
       //AsyncStorage.removeItem("AsyncPin");
       const value = await AsyncStorage.getItem("AsyncPin");
-      console.log('Inside _retrieve, i awaited value: ' + value);
+      console.log('Inside SelectT, _retrieve, i awaited AsyncPin: ' + value);
       //AsyncStorage.setItem('AsyncPin', '1234');
       //const value = await AsyncStorage.getItem("AsyncPin", () => {
       //  ToastAndroid.show('Callback Function', ToastAndroid.SHORT);

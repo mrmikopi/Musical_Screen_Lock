@@ -5,31 +5,13 @@ import AsyncStorage from '@react-native-community/async-storage';
 import SmoothPinCodeInput from 'react-native-smooth-pincode-input';
 
 
-
-
-
-
-
 // ****
+//  TODO
 //
-//
-//                  TODO
-//
-//
-//            Async Storage, Key Value tutmakta! Duzelt!
-//
-//
-//
-//
-//
-//                  TODO
-//
-//
-//
+//  gerekli action stateleri: unlock, enter, set, reEnter.
+//  Eger unlock set'e yonlendirecekse, eski sifreyi de gondermeli ki
+//  Aynisini girmeye calisirsan kabul etmesin, shake etsin.
 // ****
-
-
-
 
 
 export default class PinScreen extends React.Component {
@@ -43,66 +25,50 @@ export default class PinScreen extends React.Component {
         };
     };
 
-    state = {
-        code : '',
-        // Not sure if this works.
-      action : this.props.navigation.getParam('action', 'error'),
-    };
-    pinInput = React.createRef();
+  state = {
+      code : '',
+      // Not sure if this works.
+    action : this.props.navigation.getParam('action', 'error'),
+    oldPin : '',
 
-    _retrieveData = async () => {
-        try {
-          const value = await AsyncStorage.getItem('AsyncPin');
-          if (value !== null) {
-              // We have data!!
-              return value;
-          } else {
-              // We shouldn't be here since navigate will pass action.
-              // But we need a temporary Pin.
-              return '-1';
-          }
-        } catch (error) {
-            // Error retrieving data
-            return '-99';
-        }
+  }
+  pinInput = React.createRef();
+
+  componentDidMount(){
+    console.log('PinScreen Component did Mount');
+    this._retrieveData().then( value => this.setState({oldPin: value,}) );
+    console.log('Oldpin is: ' + this.state.oldPin + ' at componentDidMount()');
+  }
+
+  _retrieveData = async () => {
+    try {
+      const value = await AsyncStorage.getItem('AsyncPin');
+      if (value !== null) {
+          // We have data!!
+          return value;
+      } else {
+          // We shouldn't be here since navigate will pass action.
+          // But we need a temporary Pin.
+          return '-1';
+      }
+    } catch (error) {
+        // Error retrieving data
+        return '-99';
     }
+ }
 
-    _storeData = async () => {
+    _storeData = async (code) => {
         try {
-          await AsyncStorage.setItem('AsyncPin', this.state.code);
+          await AsyncStorage.setItem('AsyncPin', code);
         } catch (error) {
           // Error saving data
         }
     }
 
-    _takeAction() {
-        // SelectType (or this screen) returns us some action
-        action = this.state.action;
+    // TODO This method is called before code held in state is changed!
+  _checkCode = (code) => {
+    console.log("This code is passed to _checkCode: " + code)
 
-        if (action === 'set') {
-            // Action is Choose so we have to navigate to take input again and check
-            this.props.navigation.navigate('Pin', {
-                'LocalPin' : this.state.code,
-                'action' : 'reEnter'});
-        } else if (action === 'reEnter') {
-            // Action is re-enter so we should finish with new Pin.
-            this._checkCode(this.state.code);
-        }else if (action === 'enter') {
-            // Action is Enter so we should check code.
-            this._checkCode(this.state.code);
-        } else if (action === 'error') {
-            // Action returned error from SelectType
-            // TODO Unuttum ekranina yonlendir ileride.
-            this.props.navigation.navigate('Pin', {'action' : 'enter'});
-        } else {
-            // It shoul never be here logically, but lets redirect.
-            // TODO Bunu da unuttum'a yonlendirebilirsin.
-            this.props.navigation.navigate('Pin', {'action' : 'enter'});
-        }
-
-    }
-
-    _checkCode = (code) => {
         if (code === '-1' || code === '-99'){
             this.pinInput.current.shake()
                 .then(() => this.setState({ code: '' }));
@@ -110,71 +76,101 @@ export default class PinScreen extends React.Component {
         action = this.state.action;
         codeLegacy = '-1';
 
-        if (action === 'enter'){
-            codeLegacy = this.props.navigation.getParam('LocalPin', -1);
-        } else if (action === 'reEnter'){
-          // TODO not sure if this works
-          this._retrieveData().then( value => {codeLegacy = value});
-        }
-
-        if (code === codeLegacy){
-            // Succesfully navigate to Choose new Code
-            if (action === 'enter'){
-                // Navigate to Choose screen
-                this.props.navigation.navigate('Pin', {'action' : 'set'});
-            } else if (action === 'reEnter'){
-                // Store the data on ASyncStorage & navigate to HomeScreen
-                this._storeData();
-                this.props.navigation.navigate('SelectType');
-            }
+      // IF ENTER
+      if (action === 'enter'){
+      // Should check if same. If same, navigate to Set.
+        if(code === this.state.oldPin){
+          // Success, navigate to action : set
+          // TODO Belki metodlar sirayla calismaz diye nolur nolmaz... code=''
+          code = '';
+          this.state.code = '';
+          this.props.navigation.navigate({
+            routeName: 'Pin',
+            params: {
+              action : 'set',
+            },
+            key: 'Pinset'
+          });
         } else {
+          // Wrong code, enter again. PIN SHOULD BE HERE??
+          this.pinInput.current.shake()
+              .then(() => this.setState({ code: '' }));
+        }
+      }
+
+      // IF SET
+      else if(action === 'set'){
+      // It should check if password is same with previous password
+      // Otherwise, does not give errors. Just redirect to action:'reenter'
+        // If different from previous password
+        if (this.state.oldPin !== code){
+          console.log("In IFSET, Oldpin is: " + this.state.oldPin + ', and code is: ' +
+          code)
+          this.props.navigation.navigate({
+            routeName: 'Pin',
+            params: {
+              action : 'reEnter',
+              LocalPin : code,
+            },
+            key: 'PinreEnter'
+          });
+        }
+        // If same with previous password
+        else {
+          console.log('Entered Same Password!');
             this.pinInput.current.shake()
                 .then(() => this.setState({ code: '' }));
         }
-    }
+      }
 
-    _getCode = () => {
-        // Buraya nereden geldik?
-        action = this.state.action;
-        if (action === 'reEnter') {
-            // Eger choose ekranindan gelmissek
-            return this.props.navigation.getParam('LocalPin', -1);
-        } else if (action === 'enter') {
-            // Eger SelectType'dan gelmissek
-            return this._retrieveData();
-        } else {
-            // Buraya nasil geliriz bilmiyorum.
-            return -1;
+      // IF RE-ENTER
+      else if (action === 'reEnter'){
+      // Should check with the previous value sent from 'set' page.
+      // If match, call storedata.
+      // If not, shake and ask to re-enter again (stay @ current page)
+        codeLegacy = this.props.navigation.getParam('LocalPin', '-1');
+        // Code matches from previous.
+        if(code === codeLegacy){
+          this._storeData(code);
+          this.props.navigation.navigate('SelectType');
         }
+        // If doesn't match
+        else{
+            this.pinInput.current.shake()
+                .then(() => this.setState({ code: '' }));
+        }
+      }
+
+      // TODO IF UNLOCK
     }
 
-    render() {
-        const { code } = this.state;
-        const {action} = this.state;
-        return (
-          <ScrollView style={styles.container}>
-            <View style={styles.section}>
-                <SmoothPinCodeInput
-                  ref={this.pinInput}
+  render() {
+    const { code } = this.state;
+    const {action} = this.state;
+    return (
+      <ScrollView style={styles.container}>
+        <View style={styles.section}>
+            <SmoothPinCodeInput
+              ref={this.pinInput}
 
-                  value={code}
-                  onTextChange={code => this.setState({ code })}
-                  onFulfill={this._checkCode}
-                  onBackspace={() => console.log('No more back.')}
-                />
-            </View>
-              <Text>{action}</Text>
-            </ScrollView>
-        );
-    }
+              value={code}
+              onTextChange={code => this.setState({ code })}
+              onFulfill={this._checkCode}
+              onBackspace={() => console.log('No more back.')}
+            />
+        </View>
+        <Text>{action}</Text>
+      </ScrollView>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    //alignItems: 'center',
+    //justifyContent: 'center',
   },
   section: {
     alignItems: 'center',
