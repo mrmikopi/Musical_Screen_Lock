@@ -1,8 +1,9 @@
 import React from 'react';
 import { ScrollView, View, Button, Text, TouchableOpacity, ToastAndroid,  StyleSheet, TextInput, } from 'react-native';
 //import {PINCode} from '@haskkor/react-native-pincode';
-import AsyncStorage from '@react-native-community/async-storage';
+//import AsyncStorage from '@react-native-community/async-storage';
 import SmoothPinCodeInput from 'react-native-smooth-pincode-input';
+import * as Keychain from 'react-native-keychain';
 
 
 // ****
@@ -42,10 +43,10 @@ export default class PinScreen extends React.Component {
 
   _retrieveData = async () => {
     try {
-      const value = await AsyncStorage.getItem('AsyncPin');
-      if (value !== null) {
+      const credentials = await Keychain.getGenericPassword('pin');
+      if (credentials !== null) {
           // We have data!!
-          return value;
+          return credentials.password;
       } else {
           // We shouldn't be here since navigate will pass action.
           // But we need a temporary Pin.
@@ -58,14 +59,15 @@ export default class PinScreen extends React.Component {
  }
 
     _storeData = async (code) => {
-        try {
-          await AsyncStorage.setItem('AsyncPin', code);
+      try {
+          await Keychain.setGenericPassword('AppUser', code, 'pin');
         } catch (error) {
-          // Error saving data
+          // TODO Error saving data
         }
     }
 
-    // TODO This method is called before code held in state is changed!
+  // This method used to be called before code held in state is changed!
+  // i think i fixed it.
   _checkCode = (code) => {
     console.log("This code is passed to _checkCode: " + code)
 

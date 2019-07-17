@@ -16,7 +16,7 @@ import {
 
 export default class BongoScreen extends React.Component {
     static navigationOptions = ({navigation}) => {
-        action = navigation.getParam('action', 'unlock');
+        action = navigation.getParam('action', 'enter');
         //if (action === 'enter') { return {title: 'Enter Old Pattern' };}
         //else if (action === 'set') { return {title: 'Enter New Pattern' };}
         //else if (action === 'reset') { return {title: 'Enter New Pattern Again' };}
@@ -24,14 +24,15 @@ export default class BongoScreen extends React.Component {
         return {
             title: action === 'enter' ? 'Enter old pattern' :
                 (action === 'set' ? 'Enter new pattern' :
-                    (action === 'reset' ?
+                    (action === 'reEnter' ?
                         'Enter new pattern again' : 'Enter your pattern'))
         };
     };
 
     constructor(props){
         super(props);
-        this.state= {
+      this.state= {
+            action: this.props.navigation.getParam('action', 'error'),
             date: null,
             // distances'in length'ini sifreyi olustururken alabilirsin
             distances: [],
@@ -215,6 +216,21 @@ export default class BongoScreen extends React.Component {
         return means;
     }
 
+  _getLabel = () => {
+    switch(this.state.action){
+      case 'enter':
+        return 'Please enter your pattern';
+      case 'set':
+        return 'Please record your pattern.\nEnter it 5 Times!!!';
+      case 'reEnter':
+        return 'Re-enter your pattern\n(Only once is enough this time :) )';
+      case 'error':
+        return 'Enter your pattern if you know, contact Mikail otherwise.';
+      default:
+        return 'Enter your pattern';
+    }
+  }
+
 
   render() {
     return (
@@ -230,34 +246,50 @@ export default class BongoScreen extends React.Component {
               style={styles.welcomeImage}
             />
             <Text>
-                {this.state.isSettingP ? "Setting the Pattern. Enter it 5 times." : "Unlock with your pattern"}
+                {this._getLabel()}
             </Text>
           </View>
 
-          <View style={styles.drumButtons} onStartShouldSetResponder={() => {this.getDistance(1);return true;}}>
+          {/* BONGOS! BONGOS! BONGOS! */}
+          <View style={styles.drumButtons} onStartShouldSetResponder={() =>
+            {this.getDistance(1);return true;}}>
               <TouchableOpacity style={styles.button}
-                  onPressIn={() => this.getDistance(1)}>
-                <Text>Dum Dum</Text>
+                onPressIn={() => this.getDistance(1)}>
+                  <Text>Dum Dum</Text>
               </TouchableOpacity>
-                <TouchableOpacity style={styles.button}
-                    onPressIn={() => this.getDistance(2)}>
-                    <Text>Tek Tek</Text>
+              <TouchableOpacity style={styles.button}
+                onPressIn={() => this.getDistance(2)}>
+                  <Text>Tek Tek</Text>
                 </TouchableOpacity>
+          </View>
+          {/* BONGOS! BONGOS! BONGOS! */}
 
-            </View>
+          {/*
             <ScrollView style={height=50}>
                 <Text>
                     {this.state.distances.toString()}
                 </Text>
             </ScrollView>
+            */}
+
           <View style={styles.getStartedContainer}>
               <Button
                   onPress={() => this.resetStates()}
-                title="Reset Array"/>
+                title="Retry"/>
         </View>
+
+        {/* ****************
+        Soyle bisey olabilir:
+
+        {this._getButtons()}
+
+        Sonra action'a gore gerekli butonlari orada cagiri cagiriveririz filan
+        Guzel olmaz mi?
+        **************    */}
 
 
         {/**********  DEBUGGING THINGS **********/}
+        {/*I think i should remove these */}
         <View style={styles.getStartedContainer}>
             <Text>
                 {/*this.debugMethod()*/}

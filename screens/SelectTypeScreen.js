@@ -7,6 +7,13 @@ import {
     ToastAndroid,
 } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
+import * as Keychain from 'react-native-keychain';
+
+
+// ***** TODO *****
+// Sifre yokken olusturdun, reEnter'dan sonra buraya geri dondugunde,
+// Butonlar eski value'lari ile kaliyorlar. set pin diyince eskisini sormuyor.
+// ***** TODO *****
 
 export default class SelectTypeScreen extends React.Component {
   static navigationOptions = {
@@ -70,20 +77,15 @@ export default class SelectTypeScreen extends React.Component {
 
   _retrieveData = async () => {
     try {
-      //const data = {action2: 'choose'};
-      //await AsyncStorage.setItem("AsyncPin", "1234");
-
-      //AsyncStorage.removeItem("AsyncPin");
-      const value = await AsyncStorage.getItem("AsyncPin");
-      console.log('Inside SelectT, _retrieve, i awaited AsyncPin: ' + value);
+      //await Keychain.resetGenericPassword('pin');
+      //await Keychain.setGenericPassword('AppUser', '1234', 'pin')
+      const credentials = await Keychain.getGenericPassword('pin');
+      //console.log('Inside SelectT, _retrieve, i awaited AsyncPin: ' + value);
       //AsyncStorage.setItem('AsyncPin', '1234');
-      //const value = await AsyncStorage.getItem("AsyncPin", () => {
-      //  ToastAndroid.show('Callback Function', ToastAndroid.SHORT);
-      //});
 
-      if(value !== null){
-        //const item = JSON.parse(value);
-        //ToastAndroid.show(typeof item.act, ToastAndroid.SHORT);
+      if(credentials){
+        // console.log('Recieved username/password: ' +
+        //  credentials.username + ': ' + credentials.password);
         return 'enter';
       } else {
         //ToastAndroid.show('Will return Choose', ToastAndroid.SHORT);
