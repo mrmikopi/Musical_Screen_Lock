@@ -347,6 +347,7 @@ export default class BongoScreen extends React.Component {
               <Button title='Continue with This Pattern'
                 onPress={() => {
                   if(this.props.navigation.getParam('changedPattern', false) === true){
+                    console.log('this happened');
                     var value = [this.state.pattern, this.state.distPat];
                     this.props.navigation.navigate({
                       routeName: 'Bongo',
@@ -365,6 +366,10 @@ export default class BongoScreen extends React.Component {
           </View>
         );
 
+      case 'reEnter':
+        return (
+          <Text>Aaaaa</Text>
+        );
       default:
         return (<Button title='Default Button' onPress={this.resetStates()}/>);
     }
