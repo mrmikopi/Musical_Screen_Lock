@@ -56,7 +56,7 @@ export default class PinScreen extends React.Component {
         // Error retrieving data
         return '-99';
     }
- }
+  }
 
     _storeData = async (code) => {
       try {
