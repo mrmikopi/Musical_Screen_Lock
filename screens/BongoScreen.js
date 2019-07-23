@@ -40,7 +40,7 @@ export default class BongoScreen extends React.Component {
       date: null,
       // distances'in length'ini sifreyi olustururken alabilirsin
       distances: [],
-      bongos: [0],
+      bongos: [],
       // TODO ilk acilista "setting pattern" olmali sanki
       isSettingP: false,
       pattern: [],
@@ -51,6 +51,7 @@ export default class BongoScreen extends React.Component {
 
   componentDidMount(){
     this._retrieveData().then( value => this.setState({pattern: value[0], distPat: value[1]}));
+    console.log('Initial bongos are: ' + this.state.bongos.toString());
   }
 
   // Reset saved pattern and dist. Also...
@@ -144,7 +145,7 @@ export default class BongoScreen extends React.Component {
     var distances = this.state.distances;
     var bongos = this.state.bongos;
     var action = this.state.action;
-    if(this.patternIsOk(distances, bongos, action)){
+    if(this.patternIsOk(bongos, distances, action)){
       switch(action){
         case 'enter':
             // Navigate to 'Bongo' action:'set' key: 'Bongo' + 'set'
@@ -156,10 +157,12 @@ export default class BongoScreen extends React.Component {
               },
               key: 'Bongo' + 'set',
             });
+          break;
             //ToastAndroid.show("THEY ARE SAME", ToastAndroid.SHORT);
         case 'reEnter':
           this._storeData();
           this.props.navigation.navigate('SelectType');
+          break;
         default:
           ;
       }
@@ -167,7 +170,7 @@ export default class BongoScreen extends React.Component {
   }
 
   // Bongos are same, distances are ok.
-  patternIsOk(distances,bongos, action){
+  patternIsOk(bongos, distances, action){
     var that = this;
     var pattern;
     var distPat;
@@ -175,7 +178,7 @@ export default class BongoScreen extends React.Component {
       pattern = this.state.pattern;
       distPat = this.state.distPat;
     } else if (action === 'reEnter'){
-      var value = this.props.navigation.getParam('LocalPattern', [[],[]]);
+      var value = JSON.parse(this.props.navigation.getParam('LocalPattern', [[],[]]));
       pattern = value[0];
       distPat = value[1];
     } else {
@@ -189,7 +192,6 @@ export default class BongoScreen extends React.Component {
     }
 
     if(distances.length !== distPat.length){return false;}
-
     // This one calculates exact metronome with .35 error tolerance
     /*for(let i = 0; i < distances.length; i++){
             if(distances[i] < 0.65 * distPat[i] ||
@@ -311,12 +313,16 @@ export default class BongoScreen extends React.Component {
     switch(this.state.action){
       case 'enter':
         return 'Please enter your pattern';
+        break;
       case 'set':
         return 'Please record your pattern.\nEnter it 5 Times!!!';
+        break;
       case 'reEnter':
         return 'Re-enter your pattern\n(Only once is enough this time :) )';
+        break;
       case 'error':
         return 'Enter your pattern if you know, contact Mikail otherwise.';
+        break;
       default:
         return 'Enter your pattern';
     }
@@ -346,7 +352,7 @@ export default class BongoScreen extends React.Component {
                   "Save the Pattern" : "Start Your Pattern"}/>
               <Button title='Continue with This Pattern'
                 onPress={() => {
-                  if(this.props.navigation.getParam('changedPattern', false) === true){
+                  if(this.props.navigation.getParam('changedPattern', false)){
                     console.log('this happened');
                     var value = [this.state.pattern, this.state.distPat];
                     this.props.navigation.navigate({
