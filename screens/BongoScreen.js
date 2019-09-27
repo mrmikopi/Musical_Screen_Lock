@@ -15,33 +15,50 @@ import * as Keychain from 'react-native-keychain';
 
 //import { MonoText } from '../components/StyledText';
 
+// TODO ELZEM TODO : goBack()'leri hallet,
+// Navigation'da key'leri unique yap belki :thinking
 // Zor 1 TODO: Bongolari ayri componentler yap, <Bongoes> diye cagir.
 
 export default class BongoScreen extends React.Component {
   static navigationOptions = ({navigation}) => {
     action = navigation.getParam('action', 'enter');
+    switch(action){
+      case 'enter':
+        return 'Enter old pattern';
+        break;
+      case 'set':
+        return 'Enter new pattern';
+        break;
+      case 'reEnter':
+        return 'Enter new pattern again';
+        break;
+      default:
+        return 'Enter your pattern';
+    }
     //if (action === 'enter') { return {title: 'Enter Old Pattern' };}
     //else if (action === 'set') { return {title: 'Enter New Pattern' };}
     //else if (action === 'reset') { return {title: 'Enter New Pattern Again' };}
     //else { return {title: 'Enter Your Pattern'  };}
-    return {
-      title: action === 'enter' ? 'Enter old pattern' :
-      (action === 'set' ? 'Enter new pattern' :
-        (action === 'reEnter' ?
-          'Enter new pattern again' : 'Enter your pattern'))
-    };
+
+    //return {
+    //  title: action === 'enter' ? 'Enter old pattern' :
+    //  (action === 'set' ? 'Enter new pattern' :
+    //    (action === 'reEnter' ?
+    //      'Enter new pattern again' : 'Enter your pattern'))
+    //};
   };
 
+  // TODO **** REVIZE ****
   constructor(props){
     super(props);
     this.state= {
-      action: this.props.navigation.getParam('action', 'error'),
+      // TODO **** REVIZE ****
+      action: this.props.navigation.getParam('action', '');
       errorLabel: '',
       date: null,
       // distances'in length'ini sifreyi olustururken alabilirsin
       distances: [],
       bongos: [],
-      // TODO ilk acilista "setting pattern" olmali sanki
       isSettingP: false,
       pattern: [],
       distPat: [],
@@ -49,10 +66,58 @@ export default class BongoScreen extends React.Component {
     };
   }
 
-  componentDidMount(){
-    this._retrieveData().then( value => this.setState({pattern: value[0], distPat: value[1]}));
-    console.log('Initial bongos are: ' + this.state.bongos.toString());
+  // TODO **** REVIZE ****
+  async componentDidMount(){
+    // notes:
+    // should follow a path that distinguishes 'enter' and 'set' without
+    // having to check if there is pattern saved on Keychain or not.
+    // Because that is bulky.
+    const var = this.state.action;
+    if(!action){
+      // Basta aksiyon almadim navigationdan. Ya set ya enter.
+      const value = await this._retrieveData().then( value => {
+        if(value){
+          //entera git
+          this.setState({
+            pattern: value[0],
+            distPat: value[1],
+            action: 'enter',
+          });
+          // forceUpdate();
+        } else {
+          //sete git
+          this.setState({
+            action: 'set',
+          });
+        }
+      });
+    }
+    // else { yok } cunku
+    // nav'dan aksiyon aldim, ya set ya reEnter. Keychainle isim yok.
+    /*
+    const value = await this._retrieveData();
+    if(value){
+      console.log('Recieved Value with value: ' + value.toString());
+      let action = this.props.navigation.getParam('action', 'enter');
+      this.setState({
+        pattern: value[0],
+        distPat: value[1],
+        action: action,
+      });
+    } else {
+      console.log('Could not recieve any value!');
+      if(this.props.navigation.getParam('LocalPattern', null)){
+        this.setState({ action: 'set' });
+      } else {
+        this.setState({ action: 'reEnter' });
+      }
+    }
+    */
   }
+
+  // TODO
+  // componentWillUnmount() kurcalaman lazim.
+
 
   // Reset saved pattern and dist. Also...
   resetStates(){
@@ -84,6 +149,8 @@ export default class BongoScreen extends React.Component {
     return text;
   }
 
+  // TODO **** REVIZE ****
+  // CAN RETURN NULL!!!!!!!
   _retrieveData = async () => {
     try {
       const credentials = await Keychain.getGenericPassword('pattern');
@@ -93,12 +160,11 @@ export default class BongoScreen extends React.Component {
       } else {
         // We shouldn't be here since navigate will pass action.
         // But we need a temporary Pin.
-        const value = [ [], [] ];
-        return value;
+        return null;
       }
     } catch (error) {
       // Error retrieving data
-      return [[],[]];
+      return null;
     }
   }
 
@@ -309,6 +375,7 @@ export default class BongoScreen extends React.Component {
     return means;
   }
 
+  // TODO **** REVIZE ****
   _getLabel = () => {
     switch(this.state.action){
       case 'enter':
@@ -328,9 +395,10 @@ export default class BongoScreen extends React.Component {
     }
   }
 
+  // TODO **** REVIZE ****
   _loadButtons = () => {
+    console.log("**** State.Action is: " + this.state.action);
     switch(this.state.action){
-
       case 'enter':
         return (
           <View style={styles.getStartedContainer}>
@@ -339,7 +407,7 @@ export default class BongoScreen extends React.Component {
               title="Retry"/>
           </View>
         );
-
+        break;
       case 'set':
         return (
           <View style={styles.getStartedContainer}>
@@ -371,16 +439,19 @@ export default class BongoScreen extends React.Component {
               }}/>
           </View>
         );
-
+        break;
       case 'reEnter':
+        // TODO Duzelt burayi
         return (
           <Text>Aaaaa</Text>
         );
+        break;
       default:
         return (<Button title='Default Button' onPress={this.resetStates()}/>);
     }
   }
 
+  // TODO &&&& REVIZE &&&&
   render() {
     return (
       <View style={styles.container}>

@@ -60,10 +60,7 @@ export default class SelectInstScreen extends React.Component {
             this.props.navigation.navigate({
               routeName: (this.props.navigation.getParam('title', 'temp') !== 'temp'
                 ? 'Bongo' : 'FreePlay'),
-              params: {
-                action: this.state.action,
-              },
-              key: 'Bongo' + this.state.action
+              key: 'Bongo',
             })}>
           <Text style={styles.text}>{'The Ultimate\nDUMDUM TEKTEK'}</Text>
         </TouchableOpacity>
